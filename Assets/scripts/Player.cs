@@ -1,20 +1,29 @@
 using UnityEngine;
 using System;
 using System.IO.Ports;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public GameObject forwardDirection;
-    public GameObject knockModeUI;
     public GameObject directionArrow;
     [HideInInspector]
     public bool knockMode = false;
     public float basicKnockForce = 10f;
 
+    [HideInInspector]
+    public static Player instance;
+
     SerialPort sp;
     Rigidbody body;
 
     private int touchPreviousValue = 0;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -61,12 +70,12 @@ public class Player : MonoBehaviour
                 if (knockForce > 20)
                 {
                     body.AddForce(basicKnockForce * knockForce * Time.deltaTime * forwardDirection.transform.forward);
+                    directionArrow.SetActive(false);
                 }
-                knockModeUI.SetActive(true);
             }
             else
             {
-                knockModeUI.SetActive(false);
+                directionArrow.SetActive(true);
             }
         }
         catch (Exception)
@@ -79,7 +88,13 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
-            Debug.Log("GameOver");
+            SceneManager.LoadScene("level1");
+        }
+
+        if (other.CompareTag("Goal"))
+        {
+            SceneManager.LoadScene("level1");
+
         }
     }
 }

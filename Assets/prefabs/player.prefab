@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4827380710745176369}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4827380710745176367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.255, y: 0.25, z: 0.092269}
-  m_LocalScale: {x: 0.29024205, y: 0.29024205, z: 0.29024205}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4827380710935926683}
   - {fileID: 4827380712105883124}
@@ -93,7 +93,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4827380710745176367}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 785337d11529832479c74ab270e46d16, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -131,7 +131,7 @@ MonoBehaviour:
   knockModeUI: {fileID: 0}
   directionArrow: {fileID: 4827380710935926682}
   knockMode: 0
-  basicKnockForce: 0.5
+  basicKnockForce: 5
 --- !u!1 &4827380710935926682
 GameObject:
   m_ObjectHideFlags: 0
