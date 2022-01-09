@@ -44,30 +44,42 @@ public class Player : MonoBehaviour
                 touchPreviousValue = touchInput;
             }
 
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                knockMode = !knockMode;
+            }
+
             if (rotationAngle != 0 && !knockMode)
             {
                 transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
             }
 
+            //transform.Rotate(new Vector3(0, Input.GetAxisRaw("Horizontal") * 20f, 0));
+
             if (knockMode)
             {
-                print(knockForce);
                 if (knockForce > 20)
                 {
-                    body.AddForce(basicKnockForce * knockForce * forwardDirection.transform.forward);
+                    body.AddForce(basicKnockForce * knockForce * Time.deltaTime * forwardDirection.transform.forward);
                 }
                 knockModeUI.SetActive(true);
-                directionArrow.SetActive(false);
             }
             else
             {
                 knockModeUI.SetActive(false);
-                directionArrow.SetActive(true);
             }
         }
         catch (Exception)
         {
+            //print(e);
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            Debug.Log("GameOver");
         }
     }
 }
