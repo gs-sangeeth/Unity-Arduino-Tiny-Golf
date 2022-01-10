@@ -23,7 +23,6 @@ public class CameraFollow : MonoBehaviour
         }
         catch (Exception)
         {
-
         }
     }
 }

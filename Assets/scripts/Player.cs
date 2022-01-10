@@ -1,19 +1,20 @@
 using UnityEngine;
 using System;
 using System.IO.Ports;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public GameObject forwardDirection;
     public GameObject directionArrow;
-    [HideInInspector]
-    public bool knockMode = false;
     public float basicKnockForce = 10f;
     public GameObject levelComplete;
     public Transform levelCompletePos;
     public GameObject canvas;
+    public GameObject knockNumberText;
 
+    [HideInInspector]
+    public bool knockMode = false;
     [HideInInspector]
     public static Player instance;
 
@@ -21,7 +22,10 @@ public class Player : MonoBehaviour
     Rigidbody body;
 
     private int touchPreviousValue = 0;
+    private int knockCount = 0;
 
+    private readonly float timerSpeed = .5f;
+    private float elapsed;
 
     private void Awake()
     {
@@ -56,23 +60,19 @@ public class Player : MonoBehaviour
                 touchPreviousValue = touchInput;
             }
 
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                knockMode = !knockMode;
-            }
-
             if (rotationAngle != 0 && !knockMode)
             {
                 transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
             }
 
-            //transform.Rotate(new Vector3(0, Input.GetAxisRaw("Horizontal") * 20f, 0));
-
+            elapsed += Time.deltaTime;
             if (knockMode)
             {
-                if (knockForce > 20)
+                if (knockForce > 20 && elapsed >= timerSpeed)
                 {
+                    elapsed = 0f;
                     body.AddForce(basicKnockForce * knockForce * Time.deltaTime * forwardDirection.transform.forward);
+                    knockCount++;
                     directionArrow.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
@@ -83,8 +83,9 @@ public class Player : MonoBehaviour
         }
         catch (Exception)
         {
-            //print(e);
         }
+
+        knockNumberText.GetComponent<TMP_Text>().text = knockCount.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
         {
             var obj = Instantiate(levelComplete, levelCompletePos.position, Quaternion.identity);
             obj.transform.parent = canvas.transform;
-            //Destroy(obj);
+
             LevelLoader.instance.LoadLevel();
         }
     }
