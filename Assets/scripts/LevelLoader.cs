@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
-    public GameObject[] levels;
     [HideInInspector]
     public static LevelLoader instance;
+
+    public GameObject[] levels;
     public GameObject player;
     public GameObject knockModeUI;
 
     private GameObject loadedLevel;
-    private GameObject loadedPlayer;
     private int currentLevel = 0;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadLevel();
+        loadedLevel = GameObject.FindGameObjectWithTag("Level");
     }
 
     private void Update()
@@ -34,15 +34,15 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void LoadLevel()
+    public void LoadLevel(bool same = false)
     {
         Destroy(loadedLevel);
-        Destroy(loadedPlayer);
-        if (currentLevel != 0)
+        if (!same)
         {
             currentLevel++;
         }
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        player.transform.position = Vector3.zero + new Vector3(0, 10, 0);
         loadedLevel = Instantiate(levels[currentLevel], transform.position, Quaternion.identity);
-        loadedPlayer = Instantiate(player, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
     }
 }

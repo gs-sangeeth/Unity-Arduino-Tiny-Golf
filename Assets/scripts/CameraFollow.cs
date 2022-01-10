@@ -14,10 +14,10 @@ public class CameraFollow : MonoBehaviour
     {
         try
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = GameObject.Find("arrow").transform;
             Vector3 desiredPosition = target.position + offset;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
+            transform.SetPositionAndRotation(smoothedPosition, target.rotation);
 
             transform.LookAt(target);
         }

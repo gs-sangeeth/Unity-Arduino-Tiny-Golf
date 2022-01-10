@@ -70,12 +70,12 @@ public class Player : MonoBehaviour
                 if (knockForce > 20)
                 {
                     body.AddForce(basicKnockForce * knockForce * Time.deltaTime * forwardDirection.transform.forward);
-                    directionArrow.SetActive(false);
+                    directionArrow.GetComponent<SpriteRenderer>().enabled = false;
                 }
             }
             else
             {
-                directionArrow.SetActive(true);
+                directionArrow.GetComponent<SpriteRenderer>().enabled = true;
             }
         }
         catch (Exception)
@@ -88,13 +88,12 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
-            SceneManager.LoadScene("level1");
+            LevelLoader.instance.LoadLevel(same: true);
         }
 
         if (other.CompareTag("Goal"))
         {
-            SceneManager.LoadScene("level1");
-
+            LevelLoader.instance.LoadLevel();
         }
     }
 }
