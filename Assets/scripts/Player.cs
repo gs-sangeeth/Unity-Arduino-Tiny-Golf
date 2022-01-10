@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool knockMode = false;
     public float basicKnockForce = 10f;
+    public GameObject levelComplete;
+    public Transform levelCompletePos;
+    public GameObject canvas;
 
     [HideInInspector]
     public static Player instance;
@@ -93,6 +96,9 @@ public class Player : MonoBehaviour
 
         if (other.CompareTag("Goal"))
         {
+            var obj = Instantiate(levelComplete, levelCompletePos.position, Quaternion.identity);
+            obj.transform.parent = canvas.transform;
+            //Destroy(obj);
             LevelLoader.instance.LoadLevel();
         }
     }
