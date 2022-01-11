@@ -39,12 +39,15 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel(bool same = false)
     {
         Destroy(loadedLevel);
-        if (!same)
+        if (currentLevel < levels.Length)
         {
-            currentLevel++;
+            if (!same)
+            {
+                currentLevel++;
+            }
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.transform.position = Vector3.zero + new Vector3(0, 10, 0);
+            loadedLevel = Instantiate(levels[currentLevel], transform.position, Quaternion.identity);
         }
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.transform.position = Vector3.zero + new Vector3(0, 10, 0);
-        loadedLevel = Instantiate(levels[currentLevel], transform.position, Quaternion.identity);
     }
 }

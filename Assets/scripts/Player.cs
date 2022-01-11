@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     public GameObject circleScaleAnimation;
     public GameObject canvas;
 
-    public GameObject knockNumberText;
+    public GameObject knockCountText;
+    public GameObject deathCountText;
 
     [HideInInspector]
     public bool knockMode = false;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
     private int touchPreviousValue = 0;
     private int knockCount = 0;
+    private int deathCount = 0;
 
     private readonly float timerSpeed = .5f;
     private float elapsed;
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
             {
                 if (touchPreviousValue == 0 && touchInput == 1)
                 {
+                    AudioManager.instance.Play("knockMode");
                     knockMode = !knockMode;
 
                 }
@@ -89,13 +92,16 @@ public class Player : MonoBehaviour
         {
         }
 
-        knockNumberText.GetComponent<TMP_Text>().text = knockCount.ToString();
+        knockCountText.GetComponent<TMP_Text>().text = knockCount.ToString();
+        deathCountText.GetComponent<TMP_Text>().text = deathCount.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Finish"))
         {
+            deathCount++;
+            AudioManager.instance.Play("outOfBounds");
             var obj = Instantiate(outOfBoundsText, uiCenterPos.position, Quaternion.identity);
             var obj2 = Instantiate(circleScaleAnimation, uiCenterPos.position, Quaternion.identity);
             obj.transform.parent = canvas.transform;
