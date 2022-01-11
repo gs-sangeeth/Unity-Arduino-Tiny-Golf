@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
     public GameObject[] levels;
     public GameObject player;
     public GameObject knockModeUI;
+    public Material[] skyboxes;
 
     private GameObject loadedLevel;
     private int currentLevel = 0;
@@ -21,6 +22,7 @@ public class LevelLoader : MonoBehaviour
     {
         AudioManager.instance.Play("theme");
 
+        RenderSettings.skybox = skyboxes[currentLevel];
         loadedLevel = GameObject.FindGameObjectWithTag("Level");
     }
 
@@ -45,6 +47,7 @@ public class LevelLoader : MonoBehaviour
             {
                 currentLevel++;
             }
+            RenderSettings.skybox = skyboxes[currentLevel];
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.transform.position = Vector3.zero + new Vector3(0, 10, 0);
             loadedLevel = Instantiate(levels[currentLevel], transform.position, Quaternion.identity);
