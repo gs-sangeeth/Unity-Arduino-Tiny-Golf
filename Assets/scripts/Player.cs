@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
 
         if (other.CompareTag("Goal"))
         {
+            AudioManager.instance.Play("goal");
             var obj = Instantiate(levelCompleteText, uiCenterPos.position, Quaternion.identity);
             var obj2 = Instantiate(circleScaleAnimation, uiCenterPos.position, Quaternion.identity);
             obj.transform.parent = canvas.transform;

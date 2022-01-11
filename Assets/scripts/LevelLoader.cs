@@ -19,6 +19,8 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.Play("theme");
+
         loadedLevel = GameObject.FindGameObjectWithTag("Level");
     }
 
