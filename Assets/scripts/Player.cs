@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
                 if (knockForce > 20 && elapsed >= timerSpeed)
                 {
                     elapsed = 0f;
+                    AudioManager.instance.Play("knock");
                     body.AddForce(basicKnockForce * knockForce * Time.deltaTime * forwardDirection.transform.forward);
                     knockCount++;
                     directionArrow.GetComponent<SpriteRenderer>().enabled = false;

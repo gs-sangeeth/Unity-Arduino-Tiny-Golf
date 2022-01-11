@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: theme
     clip: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
-    volume: 1
+    volume: 0.393
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: title
     clip: {fileID: 8300000, guid: a04ec60bfacd15f4ead6e8ece28048ca, type: 3}
-    volume: 1
+    volume: 0.32
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -74,6 +74,24 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: outOfBounds
     clip: {fileID: 8300000, guid: 4836dc59ed6ae824ea8e893c325e9f11, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: knockMode
+    clip: {fileID: 8300000, guid: f52616f3be2e1324382bd0f2bc65f340, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: knock
+    clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
