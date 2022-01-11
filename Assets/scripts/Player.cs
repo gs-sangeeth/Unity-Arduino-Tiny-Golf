@@ -8,9 +8,13 @@ public class Player : MonoBehaviour
     public GameObject forwardDirection;
     public GameObject directionArrow;
     public float basicKnockForce = 10f;
-    public GameObject levelComplete;
-    public Transform levelCompletePos;
+
+    public GameObject levelCompleteText;
+    public GameObject outOfBoundsText;
+    public Transform uiCenterPos;
+    public GameObject circleScaleAnimation;
     public GameObject canvas;
+
     public GameObject knockNumberText;
 
     [HideInInspector]
@@ -92,13 +96,19 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
+            var obj = Instantiate(outOfBoundsText, uiCenterPos.position, Quaternion.identity);
+            var obj2 = Instantiate(circleScaleAnimation, uiCenterPos.position, Quaternion.identity);
+            obj.transform.parent = canvas.transform;
+            obj2.transform.parent = canvas.transform;
             LevelLoader.instance.LoadLevel(same: true);
         }
 
         if (other.CompareTag("Goal"))
         {
-            var obj = Instantiate(levelComplete, levelCompletePos.position, Quaternion.identity);
+            var obj = Instantiate(levelCompleteText, uiCenterPos.position, Quaternion.identity);
+            var obj2 = Instantiate(circleScaleAnimation, uiCenterPos.position, Quaternion.identity);
             obj.transform.parent = canvas.transform;
+            obj2.transform.parent = canvas.transform;
 
             LevelLoader.instance.LoadLevel();
         }

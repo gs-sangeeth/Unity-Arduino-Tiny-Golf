@@ -751,7 +751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035220294}
   m_Layer: 5
-  m_Name: pos
+  m_Name: uiCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,6 +1311,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1797254259}
     - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
+      propertyPath: uiCenterPos
+      value: 
+      objectReference: {fileID: 1035220294}
+    - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
       propertyPath: levelComplete
       value: 
       objectReference: {fileID: 2375571102198159592, guid: ca6ead26a511ba74680746fc670d87ed, type: 3}
@@ -1319,12 +1323,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4529273}
     - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
+      propertyPath: outOfBoundsText
+      value: 
+      objectReference: {fileID: 2375571102198159592, guid: fb3b5509ec0b0c74ea6b753e70abe743, type: 3}
+    - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
       propertyPath: levelCompletePos
       value: 
       objectReference: {fileID: 1035220294}
+    - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
+      propertyPath: levelCompleteText
+      value: 
+      objectReference: {fileID: 2375571102198159592, guid: ca6ead26a511ba74680746fc670d87ed, type: 3}
+    - target: {fileID: 4827380710745176369, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
+      propertyPath: circleScaleAnimation
+      value: 
+      objectReference: {fileID: 5265891582275007059, guid: bbcdaffd95394424aa0deecaa8113387, type: 3}
     - target: {fileID: 4827380710745176370, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 24ca5913d8b1d69498b90b39ab29012e, type: 2}
+    - target: {fileID: 4827380710935926680, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db1746b5e831f7141b7fca511d50d51a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c459ee35e3d6144afdc5c3c8813b85, type: 3}

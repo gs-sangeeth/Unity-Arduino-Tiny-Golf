@@ -825,7 +825,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TINY GOLF '
+  m_text: 'SKY GOLF '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d5c20d92a4d0b04ab5be99cdb985639, type: 2}
   m_sharedMaterial: {fileID: -6890168935794080596, guid: 6d5c20d92a4d0b04ab5be99cdb985639, type: 2}
